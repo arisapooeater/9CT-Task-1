@@ -5,11 +5,12 @@
 I need to design a program for the EV3 MINDSTORMS robot to allow it to identify and collect the yellow and red blocks back to the start zone using the colour sensor whilst navigating past other blocks using the ultrasonic sensor to detect obstacles and adjust its path automatically.
 #### Key Actions
 1. Move forward until an obstacle is detected.
-3. Move back and turn 90° from obstacle if the obstacle is green or blue.
-4. Continue moving forward if an obstacle is red or yellow, then turn 180°.
+2. Move back and turn 90° from obstacle if the obstacle is green or blue.
+3. Continue moving forward if an obstacle is red or yellow, then turn 180°.
+4. Robot moves forward in a set 'return' path corresponding to colour when red or yellow obstacle is 'captured'.
 
 ### Functional Requirements (of key actions)
-1. Obstacle Detection - The robot must stop moving when the ultrasonic sensory detects an obstacle within 10cm.
+1. Obstacle Detection - Use Case
 
 Scenario: The robot is navigating a path and encounters an obstacle.
 
@@ -19,23 +20,41 @@ Action: The robot moves forward until an obstacle is detected.
 
 Expected Outcome: The robot stops moving.
 
-2. Green/Blue Obstacle Detection - The robot must turn 90°, move forward 10cm, then turn back to original pathway and continue moving forward when the colour sensor detects that an obstacle is green or blue.
+2. Green/Blue Obstacle Evasion - Use Case
 
-Scenario: The robot is navigating a path and encounters an obstacle.
+Scenario: The robot is has stopped moving after encountering an obstacle.
 
-Inputs: The ultrasonic sensor detects an object within 10 cm.
+Inputs: The colour sensor detects the obstacle is green or blue.
 
-Action: The robot moves forward until an obstacle is detected.
+Action: The robot moves backward, turns 90° from the obstacle, moves 15 cm, then turns 270° and continues moving forward until an obstacle is detected.
 
-Expected Outcome: The robot stops moving.
+Expected Outcome: The robot avoids the green/blue blocks.
 
-3. Red/Yellow Obstacle Detection
+3. Red/Yellow Obstacle Capture - Use Case
 
+Scenario: The robot has stopped moving after encountering an obstacle.
+
+Inputs: The colour sensor detects the obstacle is red or yellow.
+
+Action: The robot moves forward until ultrasonic sensor detects the obstacle is within 0 cm, then turns 180° and continues moving forward until an obstacle is detected.
+
+Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
+
+4. Return Path after Capture - Use Case
+
+Scenario: The robot has 'captured' a red or yellow obstacle (0 cm distance with obstacle).
+
+Inputs: n/a (The colour sensor has already detected if the obstacle is either red or yellow)
+
+Action: The robot moves forward until ultrasonic sensor detects the obstacle is within 0 cm, then turns 180° and continues moving forward until an obstacle is detected.
+
+Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
 | Test Case | Input     | Expected Output   |
 |---------- |---------- |----------------   |
-|           |n/a           |                   |
-|           |           |                   |
-|           |           |                   |
+| 1. Obstacle Detection          | Ultrasonic sensor detects obstacle           | The robot stops moving.                  |
+| 2. Green/Blue Obstacle Evasion          | Colour sensor detects obstacle is green/blue           | The robot avoids the green/blue obstacle.                  |
+| 3. Red/Yellow Obstacle Capture          | Colour sensor detects obstacle is red/yellow          | The robot captures red/yellow obstacle in its 'arms'.                 | The robot captures red/yellow obstacle
+| 4. Return Path after Capture | n/a |The robot moves (with red/yellow obstacle) back to start zone, stops and turns 180°.
 
 ### Non-Functional Requirements
 
@@ -44,6 +63,8 @@ Expected Outcome: The robot stops moving.
 - Response Time - The robot should respond to sensor input(for both ultrasonic and colour sensor) within 1 second.
 
 - Accuracy - The red and yellow blocks should be transported back to the start area  with all or most of its area within the box.
+
+- Recognition - The robot should be able to identify when it needs to retrieve one more obstacle(red/yellow).
 
 ## Design
 ### Pseudocode Development
