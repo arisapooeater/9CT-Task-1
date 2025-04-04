@@ -1,16 +1,15 @@
 # 9CT Assessment Task 1
-### By Arisa Komatsu
+### *By Arisa Komatsu*
 
-## Requirements Outline
+## **Requirements Outline**
 I need to design a program for the EV3 MINDSTORMS robot to allow it to identify and collect the yellow and red blocks back to the start zone using the colour sensor whilst navigating past other blocks using the ultrasonic sensor to detect obstacles and adjust its path automatically.
-#### Key Actions
-1. Move forward until an obstacle is detected.
-2. Move back and turn 90° from obstacle if the obstacle is green or blue.
-3. Continue moving forward if an obstacle is red or yellow, then turn 180°.
-4. Robot moves forward in a set 'return' path corresponding to colour when red or yellow obstacle is 'captured'.
-
-### Functional Requirements (of key actions)
-1. Obstacle Detection - Use Case
+>### **Key Actions**
+>1. Move forward until an obstacle is detected.
+>2. Move back and turn 90° from obstacle if the obstacle is green or blue.
+>3. Continue moving forward if an obstacle is red or yellow, then turn 180°.
+>4. Robot moves forward in a set 'return' path corresponding to colour when red or yellow obstacle is 'captured'.
+### **Functional Requirements (of key actions)**
+>1. Obstacle Detection - Use Case
 
 Scenario: The robot is navigating a path and encounters an obstacle.
 
@@ -20,7 +19,7 @@ Action: The robot moves forward until an obstacle is detected.
 
 Expected Outcome: The robot stops moving.
 
-2. Green/Blue Obstacle Evasion - Use Case
+>2. Green/Blue Obstacle Evasion - Use Case
 
 Scenario: The robot is has stopped moving after encountering an obstacle.
 
@@ -30,7 +29,7 @@ Action: The robot moves backward, turns 90° from the obstacle, moves 15 cm, the
 
 Expected Outcome: The robot avoids the green/blue blocks.
 
-3. Red/Yellow Obstacle Capture - Use Case
+>3. Red/Yellow Obstacle Capture - Use Case
 
 Scenario: The robot has stopped moving after encountering an obstacle.
 
@@ -40,7 +39,7 @@ Action: The robot moves forward until ultrasonic sensor detects the obstacle is 
 
 Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
 
-4. Return Path after Capture - Use Case
+>4. Return Path after Capture - Use Case
 
 Scenario: The robot has 'captured' a red or yellow obstacle (0 cm distance with obstacle).
 
@@ -55,8 +54,7 @@ Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
 | 2. Green/Blue Obstacle Evasion          | Colour sensor detects obstacle is green/blue           | The robot avoids the green/blue obstacle.                  |
 | 3. Red/Yellow Obstacle Capture          | Colour sensor detects obstacle is red/yellow          | The robot captures red/yellow obstacle in its 'arms'.                 | The robot captures red/yellow obstacle
 | 4. Return Path after Capture | n/a |The robot moves (with red/yellow obstacle) back to start zone, stops and turns 180°.
-
-### Non-Functional Requirements
+### **Non-Functional Requirements**
 
 - Efficiency - The robot should be able to complete the task within 2-3 minutes.
 
@@ -66,20 +64,57 @@ Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
 
 - Recognition - The robot should be able to identify when it needs to retrieve one more obstacle(red/yellow).
 
-## Design
-### Pseudocode Development
-### Flowchart Development
 
-## Development and Integration
+
+## **Design**
+### **Pseudocode Development**
+```
+    BEGIN Main_Routine
+        Autodrive
+        Assess_Obstacle
+    END Main_Routine
+ ``` 
+
+```
+    BEGIN Autodrive
+        WHILE ultrasonic_sensor < 10cm
+            move forward 
+        ENDWHILE
+    END Autodrive
+  
+```
+```
+    BEGIN Assess_Obstacle
+        IF colour_sensor = red
+            move forward
+        ELIF colour_sensor = yellow
+            do yellow get and go home thing
+        ELSE 
+            go backward avoid turn thing
+        ENDIF
+    END Home_Path
+  
+```
+
+### **Flowchart Development**
+hamamamdmadmdmamdmamdmadm
+
+
+
+## **Development and Integration**
 hammydamdumdamdom
 
-## Testing and Debugging
+
+
+## **Testing and Debugging**
 hamtadamdamdidum
 
-## Evaluation
-### Peer Evaluation
+
+
+## **Evaluation**
+### **Peer Evaluation**
 hamdamdamdydum
-### Individual Project Evaluation _(in relation to peer evaluation)_
+### **Individual Project Evaluation** _(in relation to peer evaluation)_
 1. Achievement of functional and non-functional requirements
 2. Final Performance
 3. Project Management
