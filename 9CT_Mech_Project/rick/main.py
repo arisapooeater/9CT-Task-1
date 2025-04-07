@@ -16,7 +16,7 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 ev3 = EV3Brick()
 
 obstacle_sensor = UltrasonicSensor(Port.S4)
-line_sensor = ColorSensor(Port.S3)
+colour_sensor = ColorSensor(Port.S3)
 
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
@@ -29,9 +29,17 @@ ev3.speaker.beep()
 while True:
     robot.drive(200, 0)
 
-    if obstacle_sensor.distance() > 300:
+    if obstacle_sensor.distance() < 300:
         wait(3)
-        robot.straight(-100)
-        robot.turn(90)
-        robot.straight(150)
-        robot.turn(-90)
+        if colour_sensor.color() == Color.RED:
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+        elif colour_sensor.color() == Color.YELLOW:
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+           
+        else:
+           robot.straight(-200)
+           robot.turn(90)
+           robot.straight(300)
+           robot.turn(-90)
