@@ -148,8 +148,204 @@ while True:
         robot.turn(-90)
 
 ```
-didnt detect quick enough and kept barging into wall
+didnt detect quick enough and kept rotating and moving on the wall - it probably needs some tweaks for the sensor distance so its larger so it has time to detect
+- i made the distance it moves while going sideways smaller because i feel like it might run off the map really easily if its too long
 
+```
+#!/usr/bin/env pybricks-micropython
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+                                 InfraredSensor, UltrasonicSensor, GyroSensor)
+from pybricks.parameters import Port, Stop, Direction, Button, Color
+from pybricks.tools import wait, StopWatch, DataLog
+from pybricks.robotics import DriveBase
+from pybricks.media.ev3dev import SoundFile, ImageFile
+
+
+# This program requires LEGO EV3 MicroPython v2.0 or higher.
+# Click "Open user guide" on the EV3 extension tab for more information.
+
+
+# Create your objects here.
+ev3 = EV3Brick()
+
+obstacle_sensor = UltrasonicSensor(Port.S4)
+line_sensor = ColorSensor(Port.S3)
+
+left_motor = Motor(Port.B)
+right_motor = Motor(Port.C)
+
+robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+# Write your program here.
+ev3.speaker.beep()
+
+while True:
+    robot.drive(200, 0)
+
+    if obstacle_sensor.distance() > 300:
+        wait(3)
+        robot.straight(-100)
+        robot.turn(90)
+        robot.straight(150)
+        robot.turn(-90)
+```
+
+###  2. Green/Blue Obstacle Evasion
+```
+#!/usr/bin/env pybricks-micropython
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+                                 InfraredSensor, UltrasonicSensor, GyroSensor)
+from pybricks.parameters import Port, Stop, Direction, Button, Color
+from pybricks.tools import wait, StopWatch, DataLog
+from pybricks.robotics import DriveBase
+from pybricks.media.ev3dev import SoundFile, ImageFile
+
+
+# This program requires LEGO EV3 MicroPython v2.0 or higher.
+# Click "Open user guide" on the EV3 extension tab for more information.
+
+
+# Create your objects here.
+ev3 = EV3Brick()
+
+obstacle_sensor = UltrasonicSensor(Port.S4)
+colour_sensor = ColorSensor(Port.S3)
+
+left_motor = Motor(Port.B)
+right_motor = Motor(Port.C)
+
+robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+# Write your program here.
+ev3.speaker.beep()
+
+while True:
+    robot.drive(200, 0)
+
+    if obstacle_sensor.distance() < 300:
+        wait(3)
+        if colour_sensor.color() == Color.BLUE:
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+           break
+        elif colour_sensor.color() == Color.GREEN:
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+           break
+        else:
+           ev3.speaker.beep()
+           break
+```
+we're just playing around to see if it actually dtects the colour/finding a way to make it detect colour 
+- so far it hasn't worked and it just goes to the else statement even when its blue or green
+- i rsearched and i found that the distance between the object and the sensor should be pretty close so it can detect accurately so i think ill decrease the obstacle_sensor.distance to 150mm
+
+```
+#!/usr/bin/env pybricks-micropython
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+                                 InfraredSensor, UltrasonicSensor, GyroSensor)
+from pybricks.parameters import Port, Stop, Direction, Button, Color
+from pybricks.tools import wait, StopWatch, DataLog
+from pybricks.robotics import DriveBase
+from pybricks.media.ev3dev import SoundFile, ImageFile
+
+
+# This program requires LEGO EV3 MicroPython v2.0 or higher.
+# Click "Open user guide" on the EV3 extension tab for more information.
+
+
+# Create your objects here.
+ev3 = EV3Brick()
+
+obstacle_sensor = UltrasonicSensor(Port.S4)
+colour_sensor = ColorSensor(Port.S3)
+
+left_motor = Motor(Port.B)
+right_motor = Motor(Port.C)
+
+robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+# Write your program here.
+ev3.speaker.beep()
+
+while True:
+    robot.drive(200, 0)
+
+    if obstacle_sensor.distance() < 150:
+        wait(3)
+        if colour_sensor.color() == Color.BLUE:
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+           break
+        elif colour_sensor.color() == Color.GREEN:
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+           ev3.speaker.beep()
+           break
+        else:
+           ev3.speaker.beep()
+           break
+```
+we changed it to 150 but it still goes to the else statement so its not a probably with the colour not being detected right its probably a problem with the if and elif statements. i think we'll do some more research on codes that make the colour sensor detect colour then we'll come back and fix
+
+ITS STILL NOT WORKING
+- we saw in some other codes that they say 'while colour_sensor.color() in ' so we'll switch the == with 'in'
+- i also see that people say 'if color == Color.BLUE' with color = colour_sensor.color() so well try that  out
+
+```
+#!/usr/bin/env pybricks-micropython
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+                                 InfraredSensor, UltrasonicSensor, GyroSensor)
+from pybricks.parameters import Port, Stop, Direction, Button, Color
+from pybricks.tools import wait, StopWatch, DataLog
+from pybricks.robotics import DriveBase
+from pybricks.media.ev3dev import SoundFile, ImageFile
+
+
+# This program requires LEGO EV3 MicroPython v2.0 or higher.
+# Click "Open user guide" on the EV3 extension tab for more information.
+
+
+# Create your objects here.
+ev3 = EV3Brick()
+
+obstacle_sensor = UltrasonicSensor(Port.S4)
+colour_sensor = ColorSensor(Port.S3)
+
+left_motor = Motor(Port.B)
+right_motor = Motor(Port.C)
+
+robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+# Write your program here.
+ev3.speaker.beep()
+
+while True:
+    colour = colour_sensor.color()
+    robot.drive(200, 0)
+
+    if obstacle_sensor.distance() < 300:
+      wait(3)
+      if colour == Color.BLUE:
+         ev3.speaker.beep()
+         ev3.speaker.beep()
+         break
+      elif colour == Color.GREEN:
+         ev3.speaker.beep()
+         ev3.speaker.beep()
+         ev3.speaker.beep()
+         break
+      else:
+         ev3.speaker.beep()
+         break
+```
+it doesnt work :(
+    i think our main issue is figuring out what is wrong with our code - well come back later when we understand what's wrong with out code and we have a better understanding of the colour sensor
 ## **Evaluation**
 ### **Peer Evaluation**
 hamdamdamdydum
