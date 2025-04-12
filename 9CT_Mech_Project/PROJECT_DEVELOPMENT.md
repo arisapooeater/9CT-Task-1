@@ -70,30 +70,39 @@ Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
 ### **Pseudocode Development**
 ```
     BEGIN Main_Routine
-        Autodrive
-        Assess_Obstacle
-    END Main_Routine
- ``` 
-
-```
-    BEGIN Autodrive
-        WHILE ultrasonic_sensor < 10cm
-            move forward 
-        ENDWHILE
-    END Autodrive
-  
-```
-```
-    BEGIN Assess_Obstacle
-        IF colour_sensor = red
+        WHILE collected_obstacles < 2 THEN
             move forward
-        ELIF colour_sensor = yellow
-            do yellow get and go home thing
-        ELSE 
-            go backward avoid turn thing
-        ENDIF
-    END Home_Path
+            IF ultrasonic_sensor < 15 cm THEN
+                wait for 3 seconds
+                IF colour_sensor = Color.RED THEN
+                    RED_HomePath
+                ELIF colour_sensor = Color.YELLOW THEN
+                    YELLOW_HomePath
+                ELSE 
+                    move forward by -10 cm
+                    turn(90)
+                    move forward by 15 cm
+                    turn(-90)
+                END IF
+            END IF
+        END WHILE
+        Display "Program Ended :3"
+    END Main_Routine
+```
+```
+    BEGIN RED_HomePath
+        turn(180)
+        collected_obstacles += 1
+        pass
+    END RED_HomePath
   
+```
+```
+    BEGIN YELLOW_HomePath
+        turn(180)
+        collected_obstacles += 1
+        pass
+    END YELLOW_HomePath
 ```
 
 ### **Flowchart Development**
