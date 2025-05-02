@@ -22,25 +22,35 @@ left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+collected_obstacles = 0
 
 # Write your program here.
 ev3.speaker.beep()
 
-while True:
-    colour = colour_sensor.color()
-    robot.drive(200, 0)
+while collected_obstacles < 2:
+   colour = colour_sensor.color()
+   robot.drive(200, 0)
 
-    if obstacle_sensor.distance() < 300:
+   if obstacle_sensor.distance() < 300:
       wait(3)
-      if colour == Color.BLUE:
-         ev3.speaker.beep()
-         ev3.speaker.beep()
-         break
+      if colour == Color.RED:
+         robot.turn(180) 
+         robot.straight(200)
+         robot.turn(90) 
+         robot.straight(550)
+         robot.turn(90) 
+         robot.straight(200)
+         robot.straight(-100)
+         collected_obstacles += 1
+
       elif colour == Color.GREEN:
          ev3.speaker.beep()
          ev3.speaker.beep()
          ev3.speaker.beep()
-         break
-      else:
-         ev3.speaker.beep()
-         break
+         collected_obstacles += 1
+      else
+         robot.straight(-100)
+         robot.turn(90)
+         robot.straight(150)
+         robot.turn(-90)
+      

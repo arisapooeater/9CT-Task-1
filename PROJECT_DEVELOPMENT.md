@@ -246,6 +246,62 @@ We changed the distance to 15 cm, but it still goes to the else statement when w
 - Researching out how to make the colour sensor detect both green and blue
 - Changing the code to fit my original program plan once I identify and fix the issue (with the colour sensor).
 
+```
+# TEST 3
+#!/usr/bin/env pybricks-micropython
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+                                 InfraredSensor, UltrasonicSensor, GyroSensor)
+from pybricks.parameters import Port, Stop, Direction, Button, Color
+from pybricks.tools import wait, StopWatch, DataLog
+from pybricks.robotics import DriveBase
+from pybricks.media.ev3dev import SoundFile, ImageFile
+
+
+# This program requires LEGO EV3 MicroPython v2.0 or higher.
+# Click "Open user guide" on the EV3 extension tab for more information.
+
+
+# Create your objects here.
+ev3 = EV3Brick()
+
+obstacle_sensor = UltrasonicSensor(Port.S4)
+colour_sensor = ColorSensor(Port.S3)
+
+left_motor = Motor(Port.B)
+right_motor = Motor(Port.C)
+
+robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+# Write your program here.
+ev3.speaker.beep()
+
+while True:
+   colour = colour_sensor.color()
+   robot.drive(200, 0)
+
+    #if obstacle_sensor.distance() < 300:
+      #wait(3)
+   if colour == Color.BLUE:
+      ev3.speaker.beep()
+      ev3.speaker.beep()
+      break
+   if colour == Color.GREEN:
+      ev3.speaker.beep()
+      ev3.speaker.beep()
+      ev3.speaker.beep()
+      break
+   #else:
+      #ev3.speaker.beep()
+      #break
+```
+we got some help from mr scott 
+- he helped us get the colour sensor to detect colour by getting rid of all the stuff around it and focusing on just detecting colour
+- the problem with the code was not our colour sensor detecting, it was 
+a. the robot was in light detecting settings
+b. our else statement messes with the code as if it detects a different colour, it just ends because of the break
+
+next were gonna use this and adapt it into our program
     
 ### 3. Red/Yellow Obstacle Capture
 ### 4. Return Path after Capture
