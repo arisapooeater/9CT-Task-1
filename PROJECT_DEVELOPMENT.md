@@ -230,7 +230,7 @@ while True:
            ev3.speaker.beep()
            ev3.speaker.beep()
            break
-        # If the colour sensor detects green, beep twice then break the while loop
+        # If the colour sensor detects green, beep three times then break the while loop
         elif colour_sensor.color() == Color.GREEN:
            ev3.speaker.beep()
            ev3.speaker.beep()
@@ -248,44 +248,22 @@ We changed the distance to 15 cm, but it still goes to the else statement when w
 
 ```
 # TEST 3
-#!/usr/bin/env pybricks-micropython
-from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
-                                 InfraredSensor, UltrasonicSensor, GyroSensor)
-from pybricks.parameters import Port, Stop, Direction, Button, Color
-from pybricks.tools import wait, StopWatch, DataLog
-from pybricks.robotics import DriveBase
-from pybricks.media.ev3dev import SoundFile, ImageFile
-
-
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
-
-
-# Create your objects here.
-ev3 = EV3Brick()
-
-obstacle_sensor = UltrasonicSensor(Port.S4)
-colour_sensor = ColorSensor(Port.S3)
-
-left_motor = Motor(Port.B)
-right_motor = Motor(Port.C)
-
-robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
-
-# Write your program here.
+# Play a beep sound to signal the program has started
 ev3.speaker.beep()
 
+# The robot drives continuously unless there's a break in the loop
 while True:
    colour = colour_sensor.color()
    robot.drive(200, 0)
 
     #if obstacle_sensor.distance() < 300:
       #wait(3)
+    # If the colour sensor detects blue, beep twice then break the while loop
    if colour == Color.BLUE:
       ev3.speaker.beep()
       ev3.speaker.beep()
       break
+    # If the colour sensor detects green, beep three times then break the while loop
    if colour == Color.GREEN:
       ev3.speaker.beep()
       ev3.speaker.beep()
@@ -295,14 +273,12 @@ while True:
       #ev3.speaker.beep()
       #break
 ```
-we got some help from mr scott 
-- he helped us get the colour sensor to detect colour by getting rid of all the stuff around it and focusing on just detecting colour
-- the problem with the code was not our colour sensor detecting, it was 
-a. the robot was in light detecting settings
-b. our else statement messes with the code as if it detects a different colour, it just ends because of the break
+We receives some help from Mr Scott and the colour sensor works now! Contrary to my previous guesses, the problem wasn't entirely the our code's fault. By isolating just the code that detects the colour and working with that, he found that the colour sensor on our EV3 robot was on light detecting mode instead of colour, which is why our code wouldn't work. 
 
-next were gonna use this and adapt it into our program
-    
+With his help, now we can start working on adapting this code into our program so the robot can evade blue and green obstacles.
+
+**Working Towards:**
+- Changing the code to fit my original program plan.
 ### 3. Red/Yellow Obstacle Capture
 ### 4. Return Path after Capture
 (work on in class)
