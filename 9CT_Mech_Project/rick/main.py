@@ -27,30 +27,18 @@ collected_obstacles = 0
 # Write your program here.
 ev3.speaker.beep()
 
-while collected_obstacles < 2:
-   colour = colour_sensor.color()
+colour = colour_sensor.color()
+robot.drive(200, 0)
+
+
+robot.straight(200)
+robot.turn(100)
+robot.straight(610)
+robot.turn(100)
+
+while True:
    robot.drive(200, 0)
-
    if obstacle_sensor.distance() < 300:
-      wait(3)
-      if colour == Color.RED:
-         robot.turn(180) 
-         robot.straight(200)
-         robot.turn(90) 
-         robot.straight(550)
-         robot.turn(90) 
-         robot.straight(200)
-         robot.straight(-100)
-         collected_obstacles += 1
-
-      elif colour == Color.GREEN:
-         ev3.speaker.beep()
-         ev3.speaker.beep()
-         ev3.speaker.beep()
-         collected_obstacles += 1
-      else
-         robot.straight(-100)
-         robot.turn(90)
-         robot.straight(150)
-         robot.turn(-90)
+      robot.turn(190)
+      break
       
