@@ -9,7 +9,7 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 
 # This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
+# Click "Open user guide" o+ the EV3 extension tab for more information.
 
 
 # Create your objects here.
@@ -22,23 +22,35 @@ left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
-collected_obstacles = 0
+
 
 # Write your program here.
+ev3.screen.draw_text(40, 50, ":3")
 ev3.speaker.beep()
 
-colour = colour_sensor.color()
-robot.drive(200, 0)
-
-
+# The robot drives up so its facing the red obstacle
 robot.straight(200)
-robot.turn(100)
-robot.straight(610)
-robot.turn(100)
+robot.turn(107)
+robot.straight(595)
+robot.turn(107)
 
 while True:
-   robot.drive(200, 0)
-   if obstacle_sensor.distance() < 300:
-      robot.turn(190)
+   # Robot autodrives using the while code
+   robot.drive(50, 0)
+   # Once it detects an obstacle within 10 cm
+   if obstacle_sensor.distance() < 100:
+      wait(2)
+      # Its screen displays "Obstacle Detected! :0"
+      ev3.screen.clear()
+      ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
       break
+
+# If that obstacle is red
+if colour_sensor.color() == Color.BLUE:
+   # Its screen displays "RED Detected! :3"
+   ev3.screen.clear()
+   ev3.screen.draw_text(40, 50, "RED Detected! :3")
+   robot.straight(100)
+   robot.turn(196)
+   wait(3)      
       
