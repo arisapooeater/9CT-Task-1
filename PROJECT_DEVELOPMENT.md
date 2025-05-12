@@ -358,6 +358,83 @@ Yuna also made the arms for us today! We had to adjust it so one of the arms is 
 - Further refining the robot's pathway to the red obstacle so it can accurately detect
 - Fixing the code so the robot detects the obstacle and stops
 - Getting up to testing if the colour sensor is actually working
+```
+# TEST 3
+# Beep to signal the program has started
+ev3.speaker.beep()
+
+# The robot drives up so its facing the red obstacle
+robot.straight(200)
+robot.turn(107)
+robot.straight(595)
+robot.turn(107)
+
+while True:
+   # Robot autodrives using the while code
+   robot.drive(50, 0)
+   # Once it detects an obstacle within 10 cm
+   if obstacle_sensor.distance() < 100:
+      robot.stop()
+      # Its screen displays "Obstacle Detected! :0"
+      ev3.screen.clear()
+      ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
+      break
+
+# If that obstacle is red
+if colour_sensor.color() == Color.RED:
+   # Its screen displays "RED Detected! :3"
+   ev3.screen.clear()
+   ev3.screen.draw_text(40, 50, "RED Detected! :3")
+   robot.straight(120)
+   robot.turn(196)    
+   # Robot going back to start area
+   robot.straight(200)
+   robot.turn(-107)
+   robot.straight(595)
+   robot.turn(-107)
+   robot.straight(200)
+
+# The robot drives up so its facing the yellow obstacle
+robot.straight(200)
+robot.turn(107)
+robot.straight(670)
+robot.turn(107)
+robot.straight(450)
+robot.turn(107)
+
+while True:
+   # Robot autodrives using the while code
+   robot.drive(50, 0)
+   # Once it detects an obstacle within 10 cm
+   if obstacle_sensor.distance() < 100:
+      robot.stop()
+      # Its screen displays "Obstacle Detected! :0"
+      ev3.screen.clear()
+      ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
+      break
+
+# If that obstacle is yellow
+if colour_sensor.color() == Color.YELLOW:
+   # Its screen displays "YELLOW Detected! :3"
+   ev3.screen.clear()
+   ev3.screen.draw_text(40, 50, "YELLOW Detected! :3")
+   # Robot going back to start area
+   robot.straight(500)
+   robot.turn(-107)
+   robot.straight(200)
+```
+Today our robot didn't run any of the code even when we pressed it (I officially hate Rickman). This was similar to something that happened last time and we received help from Mr Scott for that but I don't remember what he did or said to fix it, and he is away in Tasmania.
+
+I'm not really sure how to fix it and I've done some research on how to find what the problem is but we only have two lessons left, which will probably be less than 2 hours since the other class keeps altering our robot, which takes up at least 10-15 minutes of our time. I'm thinking instead of connecting and downloading this file to RickMan, I'll create a separate one with just the 'main.py' in case its a problem with something in this project. 
+
+Sitting there idly not knowing what to do would've been a waste of time, so Vanessa and I created the mock code for the entire program, which is what the code will supposedly look like, with a lot of approximate measurements for the 'robot.straight' and 'robot.turn' as RickMan doesn't turn 90 degrees when you code it to turn 90 degrees (perhaps due to the texture of the surface??). Next lesson, we'll try test it again separate to this project, and if that doesn't work, we'll try receive help from Mr Groom if he's next door. If we can get the code to work, we'll tweak all the approximate measurements and make it more accurate.
+
+(once we get up to editing the robot going home, the testing will be moved to the next test case below)
+
+**Working Towards:**
+- Getting the stupid robot to run the code.
+- Tweaking approximate measurements in the mock code so it's accurate.
+- Testing if the ultrasonic and colour sensor are actually working.
 
 ### 4. Return Path after Capture
 (work on in class)
@@ -422,7 +499,19 @@ When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how
 
 4/5
 ### **Individual Project Evaluation** _(in relation to peer evaluation)_
-1. Achievement of functional and non-functional requirements
-2. Final Performance
-3. Project Management
-4. Suggestions for future improvement 
+**1. Achievement of functional and non-functional requirements**
+
+- prety good
+
+**2. Final Performance**
+
+- blah
+
+**3. Project Management**
+
+- i did pretty good, i recorded all the stuff i did every lesson and always prepared beforehand on what i want to get done in each lesson and sometimes solutions to problems we had before (even if we didnt get the stuff done or the solutions didnt work lol)
+- my time management was prety good - however we had a lot of issues and problems such as the code not running, some errors, the other class altering the robots and not changing them back, the robots setttings also being altered - that messed up my brain and made it difficult for me to readjust my time management so there definitely couldve been improvement there
+
+**4. Suggestions for future improvement**
+- better time management
+- simpler easier ideas, less procrastination
