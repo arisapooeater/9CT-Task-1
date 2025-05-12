@@ -275,7 +275,7 @@ while True:
       #ev3.speaker.beep()
       #break
 ```
-We receives some help from Mr Scott and the colour sensor works now! Contrary to my previous guesses, the problem wasn't entirely the our code's fault. By isolating just the code that detects the colour and working with that, he found that the colour sensor on our EV3 robot was on light detecting mode instead of colour, which is why our code wouldn't work. 
+We received some help from Mr Scott and the colour sensor works now! Contrary to my previous guesses, the problem wasn't entirely the our code's fault. By isolating just the code that detects the colour and working with that, he found that the colour sensor on our EV3 robot was on light detecting mode instead of colour, which is why our code wouldn't work. 
 
 With his help, now we can start working on adapting this code into our program so the robot can evade blue and green obstacles.
 
@@ -366,31 +366,61 @@ Yuna also made the arms for us today! We had to adjust it so one of the arms is 
 #### **VANESSA**
 When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?
 
-5/5
+4.5/5
 
 Explain the reason for this score in detail:
-Although she was away for a wqhile she caught up quickly with out plans and put a lot of effort into contributing even if she wasn't comprehending our ideas and stuff.
+Although Vanessa was away for a couple of lessons, she caught up quickly with our plans and put a lot of effort into trying to comprehend our ideas and contribute to them. Although some more effort could've been put into our research task, she spent time outside of class with me discussing our project and what we could improve with it. She was also the one who rarely become sullen or frustrated even after our code failed multiple times on the same function.
 
 
 When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
 
-3.8/5
+3.5/5
 
 Explain the reason for this score in detail:
-She fixed a lo9t of our ideas when even we were confused like in th and made things less complicated about what we wrote and she helped make our arms and 
-
+During a lot of our group discussions for creating the general idea for our code, she contributed by coming up with how the robot would detect things and also rationalised and simplified a lot of the ideas I came up with(because most of them were kind of stupid), making it easier for us to start building our code. She also was in charge or researching information about the EV3 robot whenever we were confused on why something didn't work, and helped Yuna create the arms so they were stable and didn't move side to side. 
 
 When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case? (our test case)
 
 3/5
 
 Explain the reason for this score in detail:
-its pretty okay, i think its a bit too complicated in some areas but thats because the map set out a lot of difficulties and challengies
+The idea for our test case was great and generally logical, but I do believe it was initially a bit too complicated in some areas, which presented difficulties that we probably wouldn't have experienced if we catered towards a simpler code. However, we were able to simplify most of it, and I'm satisfied that the sensors was actually of use to the goal instead of just a non-functional factor (which we could've done apparently).
+
+We were really 
 
 
 When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
 
-*/5
+3.9/5
+
+---
+#### **YUNA**
+When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?
+
+3.5/5
+
+Explain the reason for this score in detail:
+Yuna put in decent effort into this project overall. She mostly stayed on task and spent a lot of her own time at home researching about the colour sensor when we kept having issues with our code for the colour sensor. Even though she (and I) became a bit downcast especially when issues arose such as having to scratch our original plans and the robot not running our code in the SECOND LAST LESSON, she was able to get back on track very quickly and always had a determined mindset.
+
+
+
+When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
+
+4/5
+
+Explain the reason for this score in detail:
+While Vanessa was on holiday, Yuna and I discussed our test case and set the foundations of how it should be made. We created the code together with her researching how some EV3 functions such as for the colour sensor and the ultrasonic sensor worked while I typed what she said up the way we planned it. After that, she drew back from helping me with the code and mainly designed the arms for our robot. Yuna was the main contributor to the robot's customisation, and therefore she has contributed significantly during this project!
+
+When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case? (our test case)
+
+/5
+
+Explain the reason for this score in detail:
+
+
+When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
+
+4/5
 ### **Individual Project Evaluation** _(in relation to peer evaluation)_
 1. Achievement of functional and non-functional requirements
 2. Final Performance

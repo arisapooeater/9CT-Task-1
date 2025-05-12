@@ -24,8 +24,7 @@ right_motor = Motor(Port.C)
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 
 
-# Write your program here.
-ev3.screen.draw_text(40, 50, ":3")
+# Beep to signal the program has started
 ev3.speaker.beep()
 
 # The robot drives up so its facing the red obstacle
@@ -39,7 +38,7 @@ while True:
    robot.drive(50, 0)
    # Once it detects an obstacle within 10 cm
    if obstacle_sensor.distance() < 100:
-      wait(2)
+      robot.stop()
       # Its screen displays "Obstacle Detected! :0"
       ev3.screen.clear()
       ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
@@ -51,8 +50,7 @@ if colour_sensor.color() == Color.RED:
    ev3.screen.clear()
    ev3.screen.draw_text(40, 50, "RED Detected! :3")
    robot.straight(120)
-   robot.turn(196)
-   wait(3)      
+   robot.turn(196)    
    # Robot going home
    robot.straight(200)
    robot.turn(-107)
@@ -73,7 +71,7 @@ while True:
    robot.drive(50, 0)
    # Once it detects an obstacle within 10 cm
    if obstacle_sensor.distance() < 100:
-      wait(2)
+      robot.stop()
       # Its screen displays "Obstacle Detected! :0"
       ev3.screen.clear()
       ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
@@ -84,7 +82,6 @@ if colour_sensor.color() == Color.YELLOW:
    # Its screen displays "YELLOW Detected! :3"
    ev3.screen.clear()
    ev3.screen.draw_text(40, 50, "YELLOW Detected! :3")
-   wait(3)   
    # Robot going home
    robot.straight(500)
    robot.turn(-107)
