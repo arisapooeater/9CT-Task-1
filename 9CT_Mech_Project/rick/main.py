@@ -51,7 +51,7 @@ if colour_sensor.color() == Color.RED:
    ev3.screen.draw_text(40, 50, "RED Detected! :3")
    robot.straight(120)
    robot.turn(196)    
-   # Robot going home
+   # Robot going back to start area
    robot.straight(200)
    robot.turn(-107)
    robot.straight(595)
@@ -82,7 +82,7 @@ if colour_sensor.color() == Color.YELLOW:
    # Its screen displays "YELLOW Detected! :3"
    ev3.screen.clear()
    ev3.screen.draw_text(40, 50, "YELLOW Detected! :3")
-   # Robot going home
+   # Robot going back to start area
    robot.straight(500)
    robot.turn(-107)
    robot.straight(200)
