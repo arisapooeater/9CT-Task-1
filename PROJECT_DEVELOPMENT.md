@@ -173,6 +173,8 @@ while True:
         robot.straight(150)
         robot.turn(-90)
 ```
+>**LATER NOTE:**
+ This test case was going to be joined with the green/blue obstacle evasion in the end but we have decided to go with another plan so we will only be needing the first half of this code with the robot driving, detecting the obstacle and pausing.
 
 ###  2. Green/Blue Obstacle Evasion
 | Input | Process | Output|
@@ -278,8 +280,85 @@ We receives some help from Mr Scott and the colour sensor works now! Contrary to
 With his help, now we can start working on adapting this code into our program so the robot can evade blue and green obstacles.
 
 **Working Towards:**
-- Changing the code to fit my original program plan.
+- Changing the code to fit my ~~original~~ new program plan.
+
+
+>**LATER NOTE:**
+ We changed our idea from here so green/blue obstacle evasion, but we'll probably use the stuff we learnt from testing this in capturing the red and yellow obstacles. However, this test case will ***probably not be in our final program*** as its a bit unnecessary, especially because we had to change the way our robot goes around the path. The reason why we had to change the robot's path is because:
+> - it's too complicated and takes a lot of testing, and we don't have enough time for that
+> - our initial pathway we planned to take that included avoided an obstacle doesn't allow enough space for the colour sensor to detect the obstacle's colour without bumping into the obstacle we avoided
+
 ### 3. Red/Yellow Obstacle Capture
+```
+# TEST 1
+collected_obstacles = 0
+
+# Play a beep sound to signal the program has started
+ev3.speaker.beep()
+
+while collected_obstacles < 2:
+  colour = colour_sensor.color()
+  robot.drive(200, 0)
+
+
+  if obstacle_sensor.distance() < 300:
+      wait(3)
+      if colour == Color.YELLOW:
+         robot.straight(100)
+         robot.turn(225)
+         robot.straight(200)
+         robot.turn(140)
+         robot.straight(120)
+         robot.straight(-30)
+         collected_obstacles += 1
+```
+After testing the robot capturing the yellow, we realised that our colour sensor can't detect the colour from the way we were trying to go as one of the obstacles are in the way. Due to this, we now have to scratch our original plan (and probably the obstacle evasion) and start first by collecting the red obstacle from the left, then the yellow. We also found out that the robot doesn't turn 180 or 90 degrees accurately on the sheet (maybe because of the texture??) so this is actually going to require more testing and time. 
+
+**Working Towards:**
+- Getting the robot accurately to the red obstacle (QUICKLY!!)
+- Creating the robot's arms so we can afterward start tesing out the robot capturing the red obstacle (by turning 180)
+
+```
+# TEST 2
+# Display ":3" and play a beep sound to signal the program has started
+ev3.screen.draw_text(40, 50, ":3")
+ev3.speaker.beep()
+
+# The robot drives up so its facing the red obstacle
+robot.straight(200)
+robot.turn(107)
+robot.straight(595)
+robot.turn(107)
+
+while True:
+   # Robot autodrives using the while code
+   robot.drive(50, 0)
+   # Once it detects an obstacle within 10 cm
+   if obstacle_sensor.distance() < 100:
+      wait(2)
+      # The robot's screen displays "Obstacle Detected! :0"
+      ev3.screen.clear()
+      ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
+      break
+
+# If that obstacle is red
+if colour_sensor.color() == Color.BLUE:
+   # The robot's screen displays "RED Detected! :3"
+   ev3.screen.clear()
+   ev3.screen.draw_text(40, 50, "RED Detected! :3")
+   robot.straight(100)
+   robot.turn(196)
+   wait(3)      
+```      
+It goes up to the red obstacle (we had to substitute it for a blue one at the time) and starts auto-driving and checking for an obstacle. For some reason its not really stopping so I'm not sure if it's detecting the obstacle, so we'll mainly be working on it detecting the obstacle and colour next lesson while still tweaking the robot going up to the obstacle. I'm glad we put the screen displays in as it adds a bit of like structure to the code and makes it easier to see which code is for which function.
+
+Yuna also made the arms for us today! We had to adjust it so one of the arms is on the outside of the colour sensor so it when it detects a yellow or red obstacle, it can go straight forward and actually get it inside its arms. I think it's really stable and awesome so I'm hoping it won't need any tweaks later on.
+
+**Working Towards:**
+- Further refining the robot's pathway to the red obstacle so it can accurately detect
+- Fixing the code so the robot detects the obstacle and stops
+- Getting up to testing if the colour sensor is actually working
+
 ### 4. Return Path after Capture
 (work on in class)
 ## **Evaluation**
