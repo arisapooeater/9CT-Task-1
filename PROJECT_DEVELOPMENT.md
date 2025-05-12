@@ -284,7 +284,34 @@ With his help, now we can start working on adapting this code into our program s
 (work on in class)
 ## **Evaluation**
 ### **Peer Evaluation**
-hamdamdamdydum
+#### **VANESSA**
+When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?
+
+5/5
+
+Explain the reason for this score in detail:
+Although she was away for a wqhile she caught up quickly with out plans and put a lot of effort into contributing even if she wasn't comprehending our ideas and stuff.
+
+
+When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
+
+3.8/5
+
+Explain the reason for this score in detail:
+She fixed a lo9t of our ideas when even we were confused like in th and made things less complicated about what we wrote and she helped make our arms and 
+
+
+When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case? (our test case)
+
+3/5
+
+Explain the reason for this score in detail:
+its pretty okay, i think its a bit too complicated in some areas but thats because the map set out a lot of difficulties and challengies
+
+
+When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
+
+*/5
 ### **Individual Project Evaluation** _(in relation to peer evaluation)_
 1. Achievement of functional and non-functional requirements
 2. Final Performance
