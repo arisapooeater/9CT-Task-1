@@ -27,38 +27,33 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 # Beep to signal the program has started
 ev3.speaker.beep()
 
-# The robot drives up so its facing the red obstacle
+# The robot drives up so it's facing the red obstacle
 robot.straight(200)
 robot.turn(107)
 robot.straight(595)
 robot.turn(107)
 
 while True:
-   # Robot autodrives using the while code
+   # Robot auto drives by driving 5 cm at a time while checking the if the if statement is true
    robot.drive(50, 0)
    # Once it detects an obstacle within 10 cm
    if obstacle_sensor.distance() < 100:
       robot.stop()
       # Its screen displays "Obstacle Detected! :0"
       ev3.screen.clear()
-      ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
+      ev3.screen.draw_text(20, 50, "Obstacle Detected!")
+      # Robot moves forward 12 cm and turns back to capture obstacle
+      robot.straight(120)
+      robot.turn(196)    
+      # Robot going back to start area
+      robot.straight(200)
+      robot.turn(-107)
+      robot.straight(595)
+      robot.turn(-107)
+      robot.straight(200)
       break
 
-# If that obstacle is red
-if colour_sensor.color() == Color.RED:
-   # Its screen displays "RED Detected! :3"
-   ev3.screen.clear()
-   ev3.screen.draw_text(40, 50, "RED Detected! :3")
-   robot.straight(120)
-   robot.turn(196)    
-   # Robot going back to start area
-   robot.straight(200)
-   robot.turn(-107)
-   robot.straight(595)
-   robot.turn(-107)
-   robot.straight(200)
-
-# The robot drives up so its facing the yellow obstacle
+# The robot drives up so it's facing the yellow obstacle
 robot.straight(200)
 robot.turn(107)
 robot.straight(670)
@@ -67,22 +62,21 @@ robot.straight(450)
 robot.turn(107)
 
 while True:
-   # Robot autodrives using the while code
+   # Robot auto drives by driving 5 cm at a time while checking the if the if statement is true
    robot.drive(50, 0)
    # Once it detects an obstacle within 10 cm
    if obstacle_sensor.distance() < 100:
       robot.stop()
-      # Its screen displays "Obstacle Detected! :0"
+      if colour_sensor.color()  == 6:  # Colour sensor detects the floor is white
+        ev3.screen_clear()
+        # The robot's screen displays that the floor is white (non-functional)
+        ev3.screen.draw_text(20, 50, "w w waitt.. the floor MIGHT be white. heh.")
+        wait(3000)
+      # The robot's screen displays "Obstacle Detected!"
       ev3.screen.clear()
-      ev3.screen.draw_text(40, 50, "Obstacle Detected! :0")
-      break
-
-# If that obstacle is yellow
-if colour_sensor.color() == Color.YELLOW:
-   # Its screen displays "YELLOW Detected! :3"
-   ev3.screen.clear()
-   ev3.screen.draw_text(40, 50, "YELLOW Detected! :3")
-   # Robot going back to start area
-   robot.straight(500)
-   robot.turn(-107)
-   robot.straight(200)
+      ev3.screen.draw_text(20, 50, "Obstacle Detected!")
+      # Robot going back to start area
+      robot.straight(500)
+      robot.turn(-107)
+      robot.straight(200)
+      
