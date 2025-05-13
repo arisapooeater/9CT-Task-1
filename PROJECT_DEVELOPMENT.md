@@ -121,11 +121,6 @@ Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
 ### **Flowchart Development**
 ![Flowchart](./image/flowcharts.png "Flowcharts")
 
-## **Development and Integration**
-hammydamdumdamdom
-
-
-
 ## **Testing and Debugging**
 ###  1. Obstacle Detection (scratched in final code)
 | Input | Process | Output|
@@ -510,8 +505,7 @@ I separated the 'main.py' from this project and made a new github repository and
 > I think we were adequately successful in meeting the test case requirements as we were able to incorporate the ultrasonic sensor (though not the colour sensor), which allowed our code to still follow the test case's input, process and output format. The obstacle sensor went especially well and needed virtually no tweaks, however the colour sensor presented a lot of challenges as it wasn't very accurate in detecting colours unless it was right up in front of it. Although we identified the errors with the colour sensor, such as it being too far away or our code being adjusted so the obstacle was in front of the ultrasonic sensor, ultimately I think we made the right decision to scratch our original plan for the colour sensor and make its use more accessory. I think some areas of improvement could've definitely been made in ()
 
 ## **Evaluation**
-### **Peer Evaluation**
-#### **VANESSA**
+### **Peer Evaluation - VANESSA**
 When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?
 
 4.5/5
@@ -522,12 +516,12 @@ Although Vanessa was away for a couple of lessons, she caught up quickly with ou
 
 When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
 
-3.5/5
+4/5
 
 Explain the reason for this score in detail:
 During a lot of our group discussions for creating the general idea for our code, she contributed by coming up with how the robot would detect things and also rationalised and simplified a lot of the ideas I came up with(because most of them were kind of stupid), making it easier for us to start building our code. Although she did not play a major role in the code or the robot's customisation, she was in charge or researching information about the EV3 robot whenever we were confused on why something didn't work.
 
-When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case? (our test case)
+When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case? 
 
 3/5
 
@@ -542,33 +536,38 @@ When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how
 3.9/5
 
 ---
-#### **YUNA**
-When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?
+### **Peer Evaluation - YUNA**
+**When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?**
 
-3.5/5
+**3.5/5**
 
-Explain the reason for this score in detail:
 Yuna put in decent effort into this project overall. She mostly stayed on task and spent a lot of her own time at home researching about the colour sensor when we kept having issues with our code for the colour sensor. Even though she (and I) became a bit downcast especially when issues arose such as having to scratch our original plans and the robot not running our code in the SECOND LAST LESSON, she was able to get back on track very quickly and always had a determined mindset.
 
 
 
-When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
+**When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?**
 
-4/5
-
-Explain the reason for this score in detail:
-While Vanessa was on holiday, Yuna and I discussed our test case and set the foundations of how it should be made. We created the code together with her researching how some EV3 functions such as for the colour sensor and the ultrasonic sensor worked while I typed what she said up the way we planned it. After that, she drew back from helping me with the code and mainly designed the arms for our robot, although Vanessa and I made a lot of changes afterwards. Yuna was the main contributor to the robot's customisation, and therefore she has contributed significantly during this project!
-
-When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case? (our test case)
-
-3/5
+**3.7/5**
 
 Explain the reason for this score in detail:
+While Vanessa was on holiday, Yuna and I discussed our test case and set the foundations of how it should be made. While I created the code, she was alongside me researching how some EV3 functions such as for the colour sensor and the ultrasonic sensor worked. After that, she drew back from helping me with the code and mainly designed the arms for our robot, although Vanessa and I made a lot of changes afterwards. Yuna was the main contributor to the robot's customisation, and therefore she has contributed well during this project!
+
+My only nit pick is I wish she contributed more in the research task as we sectioned out each question so we had an equal distribution but she didn't write enough for her questions even when I told her what she should improve on and wrote her notes ,and then went on holiday so I had to also write her bit.
+
+**When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case?**
+
+**3/5**
+
+Explain the reason for this score in detail:
+
+()
 
 
-When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
+**When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?**
 
-4/5
+**4/5**
+
+----
 ### **Individual Project Evaluation** _(in relation to peer evaluation)
 **1. Achievement of functional and non-functional requirements**
 
