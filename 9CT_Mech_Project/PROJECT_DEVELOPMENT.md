@@ -125,7 +125,7 @@ Expected Outcome: The robot captures the red/yellow obstacle in its 'arms'.
 ###  1. Obstacle Detection (scratched in final code)
 | Input | Process | Output|
 |---------- |---------- |----------------   |
-| Ultrasonic sensor detects obstacle within 15 cm distance | The robot stops, reverses | The robot avoids the obstacle
+| Ultrasonic sensor detects obstacle within 15 cm distance | The robot stops, reverses, turns 90, moves around 5-10cm, tunrs -90 and continues moving | The robot avoids the obstacle
 
 ```
 # TEST 1
