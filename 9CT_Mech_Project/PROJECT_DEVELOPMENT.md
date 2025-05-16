@@ -2,7 +2,7 @@
 ### *By Arisa Komatsu*
 
 ## **Requirements Outline**
-I need to design a program for the EV3 MINDSTORMS robot to allow it to identify and collect the yellow and red blocks back to the start zone using the colour sensor whilst navigating past other blocks using the ultrasonic sensor to detect obstacles and adjust its path automatically.
+I need to design a program for the EV3 MINDSTORMS robot to allow it to identify and collect the yellow and red blocks back to the start zone using the colour sensor whilst navigating past other obstacles (green and blue blocks) using the ultrasonic sensor to detect obstacles and adjust its path automatically.
 >### **Key Actions**
 >1. Move forward until an obstacle is detected.
 >2. Move back and turn 90° from obstacle if the obstacle is green or blue.
@@ -150,7 +150,7 @@ The robot didn't detect the wall fast enough and started rotating and moving on 
 **Working Towards:**
 - Making the "obstacle_sensor.distance()" larger so the robot can detect obstacles more quickly
 - Changing the "while True" later to "while collected_obstacles < 2" later when I start combining all the test cases.
-
+---
 ```
 # TEST 2
 # Play a beep sound to signal the program has started
@@ -168,7 +168,7 @@ while True:
         robot.straight(150)
         robot.turn(-90)
 ```
->**LATER NOTE:**
+**LATER NOTE:**
  This test case was going to be joined with the green/blue obstacle evasion in the end but we have decided to go with another plan so we will only be needing the first half of this code with the robot driving, detecting the obstacle and pausing.
 
  > #### Evaluate your process in solving this test case. 
@@ -212,7 +212,7 @@ I did some research and found that the distance and sensor should be pretty clos
 **Working Towards:**
 - Figuring out how to make the colour sensor detect both green and blue
 - Changing the code to fit my original program plan once I identify and fix the issue (with the colour sensor).
-
+---
 ```
 # TEST 2
 # Play a beep sound to signal the program has started
@@ -245,7 +245,7 @@ We changed the distance to 15 cm, but it still goes to the else statement when w
 **Working Towards:**
 - Researching out how to make the colour sensor detect both green and blue
 - Changing the code to fit my original program plan once I identify and fix the issue (with the colour sensor).
-
+---
 ```
 # TEST 3
 # Play a beep sound to signal the program has started
@@ -317,7 +317,7 @@ After testing the robot capturing the yellow, we realised that our colour sensor
 **Working Towards:**
 - Getting the robot accurately to the red obstacle (QUICKLY!!)
 - Creating the robot's arms so we can afterward start tesing out the robot capturing the red obstacle (by turning 180)
-
+---
 ```
 # TEST 2
 # Display ":3" and play a beep sound to signal the program has started
@@ -358,6 +358,7 @@ Yuna also made the arms for us today! We had to adjust it so one of the arms is 
 - Further refining the robot's pathway to the red obstacle so it can accurately detect
 - Fixing the code so the robot detects the obstacle and stops
 - Getting up to testing if the colour sensor is actually working
+---
 ```
 # TEST 3
 # Beep to signal the program has started
@@ -423,7 +424,7 @@ if colour_sensor.color() == Color.YELLOW:
    robot.turn(-107)
    robot.straight(200)
 ```
-Today our robot didn't run any of the code even when we pressed it (I officially hate Rickman). This was similar to something that happened last time and we received help from Mr Scott for that but I don't remember what he did or said to fix it, and he is away in Tasmania.
+Today our robot didn't run any of the code even when we pressed it. This was similar to something that happened last time and we received help from Mr Scott for that but I don't remember what he did or said to fix it, and he is away in Tasmania.
 
 I'm not really sure how to fix it and I've done some research on how to find what the problem is but we only have two lessons left, which will probably be less than 2 hours since the other class keeps altering our robot, which takes up at least 10-15 minutes of our time. I'm thinking instead of connecting and downloading this file to RickMan, I'll create a separate one with just the 'main.py' in case its a problem with something in this project. 
 
@@ -435,7 +436,7 @@ Sitting there idly not knowing what to do would've been a waste of time, so Vane
 - Getting the stupid robot to run the code.
 - Tweaking approximate measurements in the mock code so it's accurate.
 - Testing if the ultrasonic and colour sensor are actually working.
-
+---
 ```
 # TEST 4
 # Beep to signal the program has started
@@ -500,12 +501,14 @@ I separated the 'main.py' from this project and made a new github repository and
  **Working Towards:**
 - Tweaking approximate measurements in the mock code so it's accurate.
 - Testing if the new colour sensor code wil work.
-
-
+---
 ```
 # TEST 5
 # <-------------------------------------- FUNCTIONS -------------------------------------->
 
+"""Function to include the two sensors
+Use when the obstacle is right in line of path of the EV3 so it can stop by detecting the obstacle using the ultrasonic sensor. 
+Also incorporates the colour sensor in a really useless way just so it fits assessment requirements"""
 def autodrive():
    
    while True:
@@ -514,7 +517,7 @@ def autodrive():
        # Once it detects an obstacle within 10 cm
       if obstacle_sensor.distance() < 100:
          robot.stop()
-         if colour_sensor.color() == 6: # Colour sensor detects the floor is white
+         if colour_sensor.reflection() > 50: # Colour sensor detects the floor is white (white reflects around 60-100 but the sheet is kind of off-white )
             ev3.screen.clear()
             # The robot's screen displays that the floor is white (non-functional)
             ev3.screen.draw_text(20, 50, "w w waitt.. the floor MIGHT be white. heh.")
@@ -523,6 +526,8 @@ def autodrive():
          ev3.screen.clear()
          ev3.screen.draw_text(20, 50, "Obstacle Detected!")
 
+"""Function for simplifying the main program so the "robot.straight()" and "robot.turn" don't make huge code blocks
+Measurements of each robot.straight and robot.turn are added in the main program (when there's too many straights and turns, writing 0 just makes it do nothing)"""
 def move_path(forward1, turn1, forward2, turn2, forward3, turn3):
    robot.straight(forward1)
    robot.turn(turn1)
@@ -555,52 +560,53 @@ move_path(200, 107, 670, 107, 450, 107)
 autodrive()
 
 # Robot going back to start area
-move_path(500, 107, 200, 0, 0, 0)
+move_path(500, -107, 200, 0, 0, 0)
+
 
 ```
-I restructured the program so its easier to understand and uses two functions so its a bit more similar to my flowcharts and pseudocode (its also easier for me to figure out where to tweak). Tomorrow is our last lesson so we really need to tweak all the measurements so everything gets back home without going off the map or bumping into obstacles so that will be our main goal.
+I restructured the program so it uses two functions so its a bit more similar to my flowcharts and pseudocode (its also easier for me to figure out where to tweak). Tomorrow is our last lesson so we really need to tweak all the measurements so everything gets back home without going off the map or bumping into obstacles so that will be our main goal.
 
 **Working Towards:**
 - Tweaking approximate measurements in the mock code so it's accurate.
 - Testing if the new colour sensor REFLECTION code wil work.
+---
+(Note from final class day 16/05/25)
+
+**THE CODE WON'T RUN!!!** It keeps saying its not executable and there's no problems with the code itself and the robot won't update the files even when I download it multiple times. We even asked Mr Groom for help but he said he didn't know and to just give up (he helped us for around 30 minutes). He also said wait until Monday and he said the robot was malfunctioning (apparently multiple robots too). Due to this, we won't be able to record our program in time but we have the code, although we didn't get to do any testing so it actually runs well. 
 
 > #### Evaluate your process in solving this test case. 
 > I think we were adequately successful in meeting the test case requirements as we were able to incorporate the ultrasonic sensor (though not the colour sensor), which allowed our code to still follow the test case's input, process and output format. The obstacle sensor went especially well and needed virtually no tweaks, however the colour sensor presented a lot of challenges as it wasn't very accurate in detecting colours unless it was right up in front of it. Although we identified the errors with the colour sensor, such as it being too far away or our code being adjusted so the obstacle was in front of the ultrasonic sensor, ultimately I think we made the right decision to scratch our original plan for the colour sensor and make its use more accessory. I think some areas of improvement could've definitely been made in ()
 
-## **FINAL PROGRAM CODE**
-```
-```
 ## **Evaluation**
 ### **Peer Evaluation - VANESSA**
-When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?
+**When rating 1-5 with 1 being lacklustre effort and 5 being outstanding effort, how much effort do you feel this group member put into this project?**
 
-4.5/5
+**5/5**
 
-Explain the reason for this score in detail:
-Although Vanessa was away for a couple of lessons, she caught up quickly with our plans and put a lot of effort into trying to comprehend our ideas and contribute to them. She also spent time outside of class with me discussing our project and what we could improve with it. She was also the one who rarely become sullen or frustrated even after our code failed multiple times on the same function and put a great amount of effort in making progress each lesson.
+Although Vanessa was away for a couple of lessons, she caught up quickly with our plans and put a lot of effort into trying to comprehend our ideas and contribute to them. She also spent time outside of class with me discussing our project and what we could improve with it. She was also the one who rarely become sullen or frustrated even after our code failed multiple times on the same function and put a great amount of effort in making progress each lesson. Additionally, she spent a lot of time on the research project and created really great (in my opinion) responses despite her questions being particularly hard.
 
 
-When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
+**When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?**
 
-4/5
+**4/5**
 
-Explain the reason for this score in detail:
-During a lot of our group discussions for creating the general idea for our code, she contributed by coming up with how the robot would detect things and also rationalised and simplified a lot of the ideas I came up with(because most of them were kind of stupid), making it easier for us to start building our code. Although she did not play a major role in the code or the robot's customisation, she was in charge or researching information about the EV3 robot whenever we were confused on why something didn't work.
+During a lot of our group discussions for creating the general idea for our code, she contributed by coming up with how the robot would detect things and also rationalised and simplified a lot of the ideas I came up with(because most of them were kind of stupid), making it easier for us to start building our code. Although she was in charge or researching information about the EV3 robot whenever we were confused on why something didn't work, she also came with me at lunch times (while Yuna was away) to fix malfunctions and edit the code together. After Yuna left for her holiday, Vanessa also altered what Yuna made for the robot's arms so it was more stable and functional.
 
-When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case? 
+**When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case?**
 
-3.7/5
-
-Explain the reason for this score in detail:
+**3.7/5**
 
 The idea for our test case was great and generally logical, but I do believe it was initially a bit too complicated in some areas, which presented difficulties that we probably wouldn't have experienced if we catered towards a simpler code. For example, we decided to go get the obstacles one by one, when we could've probably halved our effort by just making longer arms and grabbing both of them in one go. However, we were able to simplify most of it, and I'm satisfied that the ultrasonic sensor was actually of use to the goal instead of just a non-functional factor, which is what we did for the colour sensor.
 
 I think in the final performance we did pretty okay, it was a bit scruffy in some areas and could be improved in terms of the measurements of some of the turns and driving, but overall the vision was there and could've been made better if we were more productive in class and/or had a bit more time.
 
 
-When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
+**When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?**
 
-4/5
+**4.5/5**
+
+Even though Vanessa missed a few earlier lessons, she caught up really fast and was very involved in a lot of aspects of this project. She helped a lot with refining our ideas, stayed calm when things didn’t work, and put in effort every lesson. She also did a lot outside of class, like helping with code and fixing the robot’s arms. Overall, she was reliable and really contributed across all parts of the project.
+
 
 ---
 ### **Peer Evaluation - YUNA**
@@ -614,34 +620,47 @@ Yuna put in decent effort into this project overall. She mostly stayed on task a
 
 **When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?**
 
-**3.8/5**
+**4/5**
 
-Explain the reason for this score in detail:
 While Vanessa was on holiday, Yuna and I discussed our test case and set the foundations of how it should be made. While I created the code, she was alongside me researching how some EV3 functions such as for the colour sensor and the ultrasonic sensor worked. After that, she drew back from helping me with the code and mainly designed the arms for our robot, although Vanessa and I made a lot of changes afterwards. Yuna was the main contributor to the robot's customisation, and therefore she has contributed well during this project!
 
 My only nit pick is I wish she contributed more in the research task as we sectioned out each question so we had an equal distribution but she didn't write enough for her questions even when I told her what she should improve on and wrote her notes, and then went on holiday so I had to also write her bit. (wasn't really in her control though so she has her reasons :D)
 
 **When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?**
 
-**3.9/5**
+**4/5**
+
+Yuna did very good overall across the project and was a really helpful team mate. She helped build the base of our test case, researched the EV3 sensors when we were stuck, and focused a lot on building the robot's arms for us. Even though I wish she did more in the research task, she ultimately did show good effort and bounced back quickly when things didn’t go to plan.
 
 ----
-### **Individual Project Evaluation** _(in relation to peer evaluation)
-**1. Achievement of functional and non-functional requirements**
+### **Individual Project Evaluation** 
+**Evaluate your INDIVIDUAL Final Test in Relation to Functional Criteria**
+
 Although our final program changed quite a lot from our initial vision, we were still able to achieve some functional requirements. For example, we did fulfill the "Return Path after Capture" and it was incorporated into our program, but other functional requirements such as "Red/Yellow Obstacle Capture" and "Obstacle Detection" were also in the final code, but was slightly altered. The "Red/Yellow Obstacle Capture" does not include the colour sensor sensing red/yellow as an input and for the "Obstacle Detection", the ultrasonic sensor remains the input but the process was reduced to just stopping instead of avoiding the obstacle. Discluding the discardment of the "Green/Blue Obstacle Evasion" test case (which was due to some time constraints and the colour sensor's unreliability), I think I did a decent job implementing my planned functional requirements into the final program.
 
-In terms of non-functional requirements, I believe we ultimately did a pretty good job. The robot does respond to the ultrasonic sensor's input and stops within one second of detecting an obstacle is within 10cm. Our program is also under the time I wanted for task completion, which was 2-3 minutes, as our final video was around (). Our program was also pretty accurate, although it went a little awry in some areas, and was able to avoid the green/blue obstacles and stay on the map most of the time. However, we were not able to achieve the "Recognition" non-functional requirement, though it was in the earlier stages of our program as it made the code too complicated and difficult to keep testing. 
+**Evaluate your INDIVIDUAL Final Test in Relation to Non-Functional Criteria**
 
-**2. Final Performance**
+In terms of non-functional requirements, I believe we overall did an okay job. The robot does respond to the ultrasonic sensor's input and stops within one second of detecting an obstacle is within 10cm. Our program was also pretty accurate, although it went a little awry in some areas, and was able to avoid the green/blue obstacles and stay on the map most of the time. However, we were not able to achieve the "Effiency" requirement as our *program ultimately did not run and we could not record a video*. We were also unable to fulfil the "Recognition" non-functional requirement, though it was in the earlier stages of our program as it made the code too complicated and difficult to keep testing. I wasn't really too concerned about completing these non-functional requirements as they were just my ideal, but I believe with the amount of attention I payed towards these requirements, we did pretty decent.
 
-The final performance of our program 
+**Evaluate your GROUP'S Final Performance in Relation to the Identified Need**
 
-**3. Project Management**
+*We did not get to do the final performance of our program due to some hardware issues (or something along those lines according to Mr Groom) with the EV3 robot that prevented our robot, and a couple of others, from working very well. Due to this, I think it's quite simple to say in this evaluation that we did not do well in the final performance as we did not have one*(*a legitimate one). Some improvements would've been to actually film a final performance that didn't involve me driving around the robot with my hands around the course with, albeit amazing and cool, sound effects. If we were to say that our program did start working suddenly, I think it would not do very well either, although I think it might manage to get the red obstacle back safely without touching anything, as we spent most of our last lessons trying to fix the issue with the code not running so a lot of our measurements are off and need some changes.*
+
+**Evaluate your Project in Relation to Project Management**
 
 I believe my project management was pretty consistent, as I recorded all my testing notes after every lesson and always prepared beforehand on what I want to get done in each lesson. I also sometimes worked on the code outside of school and solved issues we had in class before lessons to optimise time. 
 
 However, in terms of time, I can see that there could've been improvement, especially whenever there were constant errors in the code that prevented us from moving forward. Instead of nitpicking of small details, I think I could have placed more importance on the main function, which would've allowed us to have a little more time to work on our final program. Additionally, near the end of this project, we wasted a lot of time as the other class kept altering the robot and its settings, so there were some things I we couldn't control for our time management as well.
 
-**4. Suggestions for future improvement**
 
-On a general basis, I think most of our future improvement had to do with time management. In a lot of our earlier lessons, we were much less productive and could've spent more time testing the robot while we had time in class. Additionally, the ideas we created, although functional, could've been simpler so it was easier for us to complete the task efficiently and effectively.
+**Evaluate your Project in Relation to Team Collaboration**
+
+I think our team collaboration was pretty good. We maintained clear communication with each other, we always spoke to each other of our opinion and we each did most of the parts we needed to do. However, I think there was some uneven work distribution especially since we had a lot of days when one member was away, but I believe that was pretty inevitable.
+
+**Justify Future Improvements you could make to your Final Product**
+
+The idea we created for our final program, although functional, could've been simpler so it was easier for us to complete the task efficiently and effectively. For example, the program could've been made so it takes both the red and yellow obstacle back at the same time so we wouldn't have to spend so much time tweaking measurements. 
+
+I would also probably not use the colour sensor and incorporate a different sensor(or the colour sensor but use it to detect lines on the ground or something) that is easier to use in the circumstances we were given. Since we chose to use long arms, if we had the colour sensor detecting the colour, it would be too late when it detected it was green as it would've already collided with the robot's arms.
+
+Overall in this project, I think most of our future improvement had to do with time management. In a lot of our earlier lessons, we were much less productive and could've spent more time testing the robot while we had time in class. 
