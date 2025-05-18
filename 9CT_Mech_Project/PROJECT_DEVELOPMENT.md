@@ -243,7 +243,7 @@ while True:
 We changed the distance to 15 cm, but it still goes to the else statement when we have a green or blue obstacle, so I think its most likely a problem with how I wrote the if and elif statements. I think I'll do some more research on how to write codes that make the colour sensor detect colour then I'll come back and continue testing this out.
 
 **Working Towards:**
-- Researching out how to make the colour sensor detect both green and blue
+- Researching how to make the colour sensor detect both green and blue
 - Changing the code to fit my original program plan once I identify and fix the issue (with the colour sensor).
 ---
 ```
@@ -273,7 +273,7 @@ while True:
       #ev3.speaker.beep()
       #break
 ```
-We received some help from Mr Scott and the colour sensor works now! Contrary to my previous guesses, the problem wasn't entirely the our code's fault. By isolating just the code that detects the colour and working with that, he found that the colour sensor on our EV3 robot was on light detecting mode instead of colour, which is why our code wouldn't work. 
+We received some help from Mr Scott and the colour sensor works now! Contrary to my previous guesses, the problem wasn't entirely our code's fault. By isolating just the code that detects the colour and working with that, he found that the colour sensor on our EV3 robot was on light detecting mode instead of colour, which is why our code wouldn't work. 
 
 With his help, now we can start working on adapting this code into our program so the robot can evade blue and green obstacles.
 
@@ -281,7 +281,7 @@ With his help, now we can start working on adapting this code into our program s
 - Changing the code to fit my ~~original~~ new program plan.
 
 > #### Evaluate your process in solving this test case. 
-> Overall, I think I was very successful in meeting this test case's requirements as with this test case alone, the robot does avoids the obstacles. However, this test case was ***not in our final program*** as it was unnecessary in our new plan because we had to change the way our robot goes around the path. Some challenges we faced for this test case was with the colour sensor, which we were able to identify it's issue by isolating the colour sensor's function. We found out that the way we coded it made the code break too early in the while code, and we also additionally found out that our robot's settings for the colour sensor was linear instead of colour. I think the robot detecting the obstacle using the ultrasonic sensor and just avoiding it alone went really well, but I believe that this test case could be improved next time particularly around the colour sensor's function.
+> Overall, I think I was very successful in meeting this test case's requirements as with this test case alone, the robot does avoids the obstacles. However, this test case was ***not in our final program*** as it was unnecessary in our new plan because we had to change the way our robot goes around the path. Some challenges we faced for this test case was with the colour sensor, which we were able to identify its issue by isolating the colour sensor's function. We found out that the way we coded it made the code break too early in the while code, and we also additionally found out that our robot's settings for the colour sensor was linear instead of colour. I think the robot detecting the obstacle using the ultrasonic sensor and just avoiding it alone went really well, but I believe that this test case could be improved next time particularly around the colour sensor's function.
 
 ### 3. Red/Yellow Obstacle Capture + Return Path after Capture (conjoined)
 
@@ -316,7 +316,7 @@ After testing the robot capturing the yellow, we realised that our colour sensor
 
 **Working Towards:**
 - Getting the robot accurately to the red obstacle (QUICKLY!!)
-- Creating the robot's arms so we can afterward start tesing out the robot capturing the red obstacle (by turning 180)
+- Creating the robot's arms so we can afterward start testing out the robot capturing the red obstacle (by turning 180)
 ---
 ```
 # TEST 2
@@ -350,9 +350,9 @@ if colour_sensor.color() == Color.BLUE:
    robot.turn(196)
    wait(3)      
 ```      
-It goes up to the red obstacle (we had to substitute it for a blue one at the time) and starts auto-driving and checking for an obstacle. For some reason its not really stopping so I'm not sure if it's detecting the obstacle, so we'll mainly be working on it detecting the obstacle and colour next lesson while still tweaking the robot going up to the obstacle. I'm glad we put the screen displays in as it adds a bit of like structure to the code and makes it easier to see which code is for which function.
+It goes up to the red obstacle (we had to substitute it for a blue one at the time) and starts auto-driving and checking for an obstacle. For some reason its not really stopping so I'm not sure if it's detecting the obstacle, so we'll mainly be working on it detecting the obstacle and colour next lesson while still tweaking the robot going up to the obstacle. I'm glad we put the screen displays in as it adds a bit of structure to the code and makes it easier to see which code is for which function.
 
-Yuna also made the arms for us today! We had to adjust it so one of the arms is on the outside of the colour sensor so it when it detects a yellow or red obstacle, it can go straight forward and actually get it inside its arms. I think it's really stable and awesome so I'm hoping it won't need any tweaks later on.
+Yuna also made the arms for us today! We had to adjust it so one of the arms is on the outside of the colour sensor so when it detects a yellow or red obstacle, it can go straight forward and actually get it inside its arms. I think it's really stable and awesome so I'm hoping it won't need any tweaks later on
 
 **Working Towards:**
 - Further refining the robot's pathway to the red obstacle so it can accurately detect
